@@ -9,18 +9,121 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
 
+    <style>
+        *{
+            /*border: red 1px solid;*/
+        }
+        .citacao{
+            background:#CCC; 
+            color:#FFF;
+        }
+        .logo{
+            display:inline-block;
+            float: left;
+        }
+        .login{
+            display:inline-block;
+            float:right;
+        }
+        .busca .busca-item{
+            height:80px;
+            padding-top:5px;
+            /*width:100%;*/
+            text-align:center;
+            vertical-align:center;
+            background-color:white;
+            /*transition: background-color 0.5s linear 0.1s;*/
+            border: 1px solid black;
+        }
+        .busca .busca-item:hover{
+            background-color:cyan;
+        }
+        .busca .busca-item input,
+        .busca .busca-item select{
+            margin:auto;
+        } 
+
+        .separador{
+            width:15px;
+        }
+        .mapa{
+            margin-top:60px;
+        }
+        .busca .busca-btn-submit button{
+            margin-top:5px;
+            width:120px !important;
+        }
+    </style>
 </head>
 <body>
+     
     <div class="navbar navbar-app navbar-top bandeira">
         <div class="mavbar-brand">
-            <h2>HackFaesa - AgriculturaCompartilhada</h2>
-            <i>Sistema de auxilio!</i>
+            <div class="logo"><img src="img/map.png" width="140px" class="img-thumbnail"/> </div>
+            <div class="login"><button class="btn btn-success">Clique aqui para Acessar</button> <span class="separador"></span> <button class="btn btn-info">precisa de Ajuda?</button> </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
+            <div class="well citacao">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
+        </div>
 
+        <div class="row busca">
+            <form class="form-inline">
+                <div class="col-xs-12">
+                    <div class="busca-container">
+
+                        <div class="form-group col-md-3 col-xs-12 busca-item">                        
+                            <label for="onde">Onde?</label>
+                            <select class="form-control" id="onde">
+                                <option value="Campinhos">Campinhos</option>
+                                <option value="Rio Bananal">Rio Bananal</option>
+                            </select>
+                        </div>
+                    
+                        <div class=" col-md-3 col-xs-12 busca-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="tipo" id="produto" value="produto" checked>
+                                    PRODUTO
+                                </label>
+                            </div>
+                            <div class="separador"></div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="tipo" id="transporte" value="transporte">
+                                    TRANSPORTE
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group  col-md-3 col-xs-12  busca-item">
+                            <label for="quando">Quando?</label>
+                            <input type="date" class="form-control" id="quando">
+                        </div>
+                        
+                        <div class="form-group  col-md-3 col-xs-12  busca-item">
+                            <label for="produto">Produto?</label>
+                            <select class="form-control" id="produto">
+                                <option value="Maçã">Maçã</option>
+                                <option value="Banana">Banana</option>
+                                <option value="Cebola">Cebola</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-3 busca-btn-submit pull-right">
+                    <button type="submit" class="btn btn-success pull-right">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row mapa">
+            <img src="img/map.png" alt="mapa" class="img-responsive center-block"/>
         </div>
     </div>
 </body>
