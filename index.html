@@ -12,71 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</head>
 <body ng-controller="HomeController as vm">
-    <div class="navbar navbar-app navbar-top">
-
-    <div class="modal-open" ng-show="vm.modalLogin">
-        <div class="fundo" ng-click="vm.fecharLogin()"></div>
-        <div class="cadastrar">
-            <div class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label class="control-label" for="email-login">Email</label>
-                                    <input class="form-control" id="email-login" placeholder="Email" type="email" ng-model="vm.userLogin.email">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="senha-login">Senha</label>
-                                    <input class="form-control" id="senha-login" placeholder="Senha" type="password" ng-model="vm.userLogin.senha">
-                                </div>
-                                <div class="row text-center">
-                                    <button type="button" class="btn btn-default" ng-click="vm.fecharLogin()">Voltar</button>
-                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarLogin()">Entrar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-open" ng-show="vm.modalCadastro" >
-        <div class="fundo" ng-click="vm.fecharCadastro()"></div>
-        <div class="cadastrar">
-            <div class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label class="control-label" for="nome-cadastro">Nome</label>
-                                    <input class="form-control" id="nomde-cadastro" placeholder="Nome" type="text" ng-model="vm.userCadastro.nome"> </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="email-cadastro">Email</label>
-                                    <input class="form-control" id="email-cadastro" placeholder="Email" type="email" ng-model="vm.userCadastro.email"> </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="senha-cadastro">Senha</label>
-                                    <input class="form-control" id="senha-cadastro" placeholder="Senha" type="password" ng-model="vm.userCadastro.senha"> </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="senha-cadastro-confirma">Confirmar senha</label>
-                                    <input class="form-control" id="senha-cadstro-confirma" placeholder="Senha" type="password" ng-model="vm.userCadastro.senhaConfirma"> </div>
-                                <div class="row text-center">
-                                    <button type="button" class="btn btn-default" ng-click="vm.fecharCadastro()">Voltar</button>
-                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarCadastro()">Entrar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-     
     <div class="navbar navbar-app navbar-top">
         <div class="mavbar-brand">
             <div class="logo">
@@ -84,8 +20,6 @@
             <div class="login">
                 <button class="btn btn-success" ng-click="vm.acessar()">Clique aqui para Acessar</button> <span class="separador"></span>
                 <button class="btn btn-info" ng-click="vm.ajuda()">precisa de Ajuda?</button>
-                <div class="separador-btn"></div>
-                <button class="btn btn-default" ng-click="vm.acessar()">Entrar</button>
             </div>
         </div>
     </div>
@@ -107,7 +41,6 @@
                                     <option value="Marechal Floriano">Marechal Floriano</option>
                                     <option value="Domingos Martins">Domingos Martins</option>
                                     <option value="Rio Bananal">Rio Bananal</option>
-                                <option value="Marechal Floriano">Marechal Floriano</option>
                                 </select>
                             </div>
                             <div class=" col-md-3 col-xs-12 busca-item  menu_borda">
@@ -145,27 +78,6 @@
             <div class="descricaoGeral">
                 <div class="tituloDescricao">Produtores, Motoristas e Compradores</div>
                  <div class="subtituloDescricao">Unidos abrindo caminhos para os melhores produtos agrícolas da região.</div>
-            <div ng-repeat="item in vm.items | orderBy: $index">
-                <div>
-                    {{item.dataExpira}} <br/>
-                    {{item.dateInicio}} <br/>
-                    {{item.descricao}} <br/>
-                    {{item.diasDisponiveis}} <br/>
-                    {{item.email}} <br/>
-                    {{item.endereco}} <br/>
-                    {{item.fotos}} <br/>
-                    {{item.nomeUsuario}} <br/>
-                    {{item.produto}} <br/>
-                    {{item.quantidadeTotal}} <br/>
-                    {{item.telefone}} <br/>
-                    {{item.tipoAnuncio}} <br/>
-                    {{item.titulo}} <br/>
-                    {{item.unidadeMedida}} <br/>
-                    {{item.valorUnitario}} <br/>
-                </div>
-            </div>
-        </div>
-
             </div>
         </div>
 
@@ -181,7 +93,6 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/home.controller.js"></script>
-    <script src="js/home.service.js"></script>
 </body>
 
 </html>
