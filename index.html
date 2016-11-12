@@ -13,13 +13,76 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body ng-controller="HomeController as vm">
+
+
+    <div class="modal-open" ng-show="vm.modalLogin">
+        <div class="fundo" ng-click="vm.fecharLogin()"></div>
+        <div class="cadastrar">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label class="control-label" for="email-login">Email</label>
+                                    <input class="form-control" id="email-login" placeholder="Email" type="email" ng-model="vm.userLogin.email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="senha-login">Senha</label>
+                                    <input class="form-control" id="senha-login" placeholder="Senha" type="password" ng-model="vm.userLogin.senha">
+                                </div>
+                                <div class="row text-center">
+                                    <button type="button" class="btn btn-default" ng-click="vm.fecharLogin()">Voltar</button>
+                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarLogin()">Entrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-open" ng-show="vm.modalCadastro" >
+        <div class="fundo" ng-click="vm.fecharCadastro()"></div>
+        <div class="cadastrar">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label class="control-label" for="nome-cadastro">Nome</label>
+                                    <input class="form-control" id="nomde-cadastro" placeholder="Nome" type="text" ng-model="vm.userCadastro.nome"> </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="email-cadastro">Email</label>
+                                    <input class="form-control" id="email-cadastro" placeholder="Email" type="email" ng-model="vm.userCadastro.email"> </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="senha-cadastro">Senha</label>
+                                    <input class="form-control" id="senha-cadastro" placeholder="Senha" type="password" ng-model="vm.userCadastro.senha"> </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="senha-cadastro-confirma">Confirmar senha</label>
+                                    <input class="form-control" id="senha-cadstro-confirma" placeholder="Senha" type="password" ng-model="vm.userCadastro.senhaConfirma"> </div>
+                                <div class="row text-center">
+                                    <button type="button" class="btn btn-default" ng-click="vm.fecharCadastro()">Voltar</button>
+                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarCadastro()">Entrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="navbar navbar-app navbar-top">
         <div class="mavbar-brand">
             <div class="logo">
                 <div class="logo-img"></div> <span class="titulo" ng-bind="vm.titulo">Agribook.</span> </div>
             <div class="login">
-                <button class="btn btn-success" ng-click="vm.acessar()">Clique aqui para Acessar</button> <span class="separador"></span>
-                <button class="btn btn-info" ng-click="vm.ajuda()">precisa de Ajuda?</button>
+                <span class="btn " ng-click="vm.cadastrar()">Tornar-se menbro</span>
+                <span class="btn " ng-click="vm.ajuda()">Ajuda</span>
+                <span class="btn " ng-click="vm.acessar()">Entrar</span>
             </div>
         </div>
     </div>
@@ -93,6 +156,7 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/home.controller.js"></script>
+    <script src="js/home.service.js"></script>
 </body>
 
 </html>

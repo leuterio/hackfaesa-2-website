@@ -78,7 +78,7 @@
         }
 
         function activate() { 
-            vm.titulo = "OrtBook"
+            vm.titulo = "Agribook."
             
             vm.acessar = acessar;
             vm.fecharLogin = fecharLogin;
