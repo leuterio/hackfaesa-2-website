@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt" ng-app="hackfaesa">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta charset="UTF-8">
     <title>HackFaesa - AgriculturaCompartilhada</title>
-    
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="css/estilo.css" />
+    <link rel="stylesheet" href="css/estilo.css" /> </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body ng-controller="HomeController as vm">
-
+    <div class="navbar navbar-app navbar-top">
 
     <div class="modal-open" ng-show="vm.modalLogin">
         <div class="fundo" ng-click="vm.fecharLogin()"></div>
@@ -77,81 +79,72 @@
      
     <div class="navbar navbar-app navbar-top">
         <div class="mavbar-brand">
-            <div class="logo"> <div class="logo-img"></div> <span class="titulo" ng-bind="vm.titulo"></span> </div>
+            <div class="logo">
+                <div class="logo-img"></div> <span class="titulo" ng-bind="vm.titulo">Agribook.</span> </div>
             <div class="login">
-                <button class="btn btn-default" ng-click="vm.cadastrar()">Tornar-se menbro</button> 
-                <div class="separador-btn"></div>
-                <button class="btn btn-default" ng-click="vm.ajuda()">Ajuda</button>
+                <button class="btn btn-success" ng-click="vm.acessar()">Clique aqui para Acessar</button> <span class="separador"></span>
+                <button class="btn btn-info" ng-click="vm.ajuda()">precisa de Ajuda?</button>
                 <div class="separador-btn"></div>
                 <button class="btn btn-default" ng-click="vm.acessar()">Entrar</button>
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="well citacao">
                 <div class="verde">Encontre, Anuncie, Explore.</div>
-                 <div>Produtos Naturais de agricultores perto de você.</div>
+                 <div class="subtitulo">Produtos Naturais de agricultores perto de você.</div>
             </div>
         </div>
-
         <div class="row busca">
             <form class="form-inline">
                 <div class="col-xs-12">
                     <div class="busca-container">
-
-                        <div class="form-group col-md-3 col-xs-12 busca-item">                        
-                            <label for="onde">Onde?</label>
-                            <select class="form-control" id="onde" ng-model="vm.itemBusca.onde">
-                                <option value="Campinhos">Campinhos</option>
-                                <option value="Rio Bananal">Rio Bananal</option>
+                        <div class="row thumbnail">
+                            <div class="form-group col-md-3 col-xs-12 busca-item menu_borda_esq">
+                                <label for="onde">Onde</label>
+                                <select class="form-control" id="onde" ng-model="vm.itemBusca.onde">
+                                    <option value="Marechal Floriano">Marechal Floriano</option>
+                                    <option value="Domingos Martins">Domingos Martins</option>
+                                    <option value="Rio Bananal">Rio Bananal</option>
                                 <option value="Marechal Floriano">Marechal Floriano</option>
-                            </select>
-                        </div>
-                    
-                        <div class=" col-md-3 col-xs-12 busca-item">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="tipo" id="tipo-produto" value="produto" checked ng-model="vm.itemBusca.tipo">
-                                    PRODUTO
-                                </label>
+                                </select>
                             </div>
-                            <div class="separador"></div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="tipo" id="tipo-transporte" value="transporte" ng-model="vm.itemBusca.tipo">
-                                    TRANSPORTE
-                                </label>
+                            <div class=" col-md-3 col-xs-12 busca-item  menu_borda">
+                                <div class="radio">
+                                    <label class="produto">
+                                        <input  type="radio" name="tipo" id="tipo-produto" value="produto" checked ng-model="vm.itemBusca.tipo"> Produto </label>
+                                </div>
+                                <div class="separador"></div>
+                                <div class="radio">
+                                    <label class="transporte">
+                                        <input  type="radio" name="tipo" id="tipo-transporte" value="transporte" ng-model="vm.itemBusca.tipo"> Transporte </label>
+                                </div>
                             </div>
-                        </div>
-
-
-                        <div class="col-md-3 col-xs-12  busca-item">
-                            <label >Quando?</label>
-                            <div>
-                                <label for="inicio">Inicio</label>
-                                <input type="date" class="form-control" id="inicio" ng-model="vm.itemBusca.inicio"> <span> >> </span>
-                                <label for="fim">Fim</label>
-                                <input type="date" class="form-control" id="fim" ng-model="vm.itemBusca.fim">
+                            <div class="col-md-3 col-xs-12  busca-item  menu_borda">
+                                <div class="form-group">
+                                        <label for="inicio">Quando</label>
+                                        <input type="date" class="form-control" id="inicio" ng-model="vm.itemBusca.inicio"> 
+                                </div>
+                                
+                            </div>
+                            <div class="form-group  col-md-3 col-xs-12  busca-item  menu_borda_dir">
+                                <label for="nomeProduto">Busca</label>
+                                <input type="text" class="form-control" ng-model="vm.filtro" /> 
                             </div>
                         </div>
-                        
-                        <div class="form-group  col-md-3 col-xs-12  busca-item">
-                            <label for="nomeProduto">Fittro?</label>
-                            <input type="text" ng-model="vm.filtro" />
-                        </div>
-                        
                     </div>
                 </div>
-
-                <div class="form-group col-xs-3 busca-btn-submit pull-right">
+                 <div class="form-group col-xs-3 busca-btn-submit pull-right botao-enviar">
                     <button type="submit" class="btn btn-success pull-right" ng-click="vm.buscar()">Buscar</button>
                 </div>
             </form>
         </div>
 
         <div class="row">
+            <div class="descricaoGeral">
+                <div class="tituloDescricao">Produtores, Motoristas e Compradores</div>
+                 <div class="subtituloDescricao">Unidos abrindo caminhos para os melhores produtos agrícolas da região.</div>
             <div ng-repeat="item in vm.items | orderBy: $index">
                 <div>
                     {{item.dataExpira}} <br/>
@@ -173,16 +166,22 @@
             </div>
         </div>
 
-        <div class="row imagem-principal">
-            <img src="img/Esquema.png" alt="mapa" class="img-responsive center-block"/>
+            </div>
         </div>
-    </div>
 
-    
+        <div class="row imagem-principal"> <img src="img/Esquema.png" alt="mapa" class="img-responsive center-block" /> </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <div class="footerText">Todos os direitos reservados 2016 ®</div>
+    <div>
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/home.controller.js"></script>
     <script src="js/home.service.js"></script>
 </body>
+
 </html>
