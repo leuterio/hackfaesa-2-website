@@ -5,6 +5,15 @@
 .logo{
     display:inline-block;
     float: left;
+   
+}
+.logo .logo-img{
+    display:inline-block;
+    background-image: url("../img/logo_small.png");
+    background-size: 86px 88px;
+    width: 86px;
+    height: 88px;
+    margin: 10px;
 }
 .titulo{
     font-size:34px;
@@ -14,30 +23,33 @@
 .login{
     display:inline-block;
     float:right;
+    padding-top: 10px; 
 }
 .busca .busca-item{
-    height:80px;
+    height:90px;
     padding-top:5px;
-    /*width:100%;*/
     text-align:center;
-    vertical-align:center;
     background-color:white;
-    /*transition: background-color 0.5s linear 0.1s;*/
     border: 1px solid black;
-}
-.busca .busca-item:hover{
-    background-color:cyan;
+    vertical-align: middle;
 }
 .busca .busca-item input,
-.busca .busca-item select{
+.busca .busca-item select,
+.busca .busca-item label{
     margin:auto;
-} 
+    margin-left: 0px !important;
+    vertical-align: middle;
+}
 
 .separador{
     width:15px;
 }
-.mapa{
+.imagem-principal{
     margin-top:60px;
+}
+.imagem-principal img{
+    width: 90%;
+    margin: auto;
 }
 .busca .busca-btn-submit button{
     margin-top:5px;

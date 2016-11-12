@@ -15,14 +15,21 @@
      
     <div class="navbar navbar-app navbar-top bandeira">
         <div class="mavbar-brand">
-            <div class="logo"><img src="img/map.png" width="140px" class="img-thumbnail"/> <span class="titulo" ng-bind="vm.titulo"></span> </div>
-            <div class="login"><button class="btn btn-success">Clique aqui para Acessar</button> <span class="separador"></span> <button class="btn btn-info">precisa de Ajuda?</button> </div>
+            <div class="logo"> <div class="logo-img"></div> <span class="titulo" ng-bind="vm.titulo"></span> </div>
+            <div class="login">
+                <button class="btn btn-success" ng-click="vm.acessar()">Clique aqui para Acessar</button> 
+                <span class="separador"></span> 
+                <button class="btn btn-info" ng-click="vm.ajuda()">precisa de Ajuda?</button> 
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="well citacao">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
+            <div class="well citacao">
+                <div class="verde">Encontre, Anuncie, Explore.</div>
+                 <div>Produtos Naturais de agricultores perto de você.</div>
+            </div>
         </div>
 
         <div class="row busca">
@@ -32,7 +39,7 @@
 
                         <div class="form-group col-md-3 col-xs-12 busca-item">                        
                             <label for="onde">Onde?</label>
-                            <select class="form-control" id="onde">
+                            <select class="form-control" id="onde" ng-model="vm.itemBusca.onde">
                                 <option value="Campinhos">Campinhos</option>
                                 <option value="Rio Bananal">Rio Bananal</option>
                             </select>
@@ -41,45 +48,46 @@
                         <div class=" col-md-3 col-xs-12 busca-item">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="tipo" id="produto" value="produto" checked>
+                                    <input type="radio" name="tipo" id="tipo-produto" value="produto" checked ng-model="vm.itemBusca.tipo">
                                     PRODUTO
                                 </label>
                             </div>
                             <div class="separador"></div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="tipo" id="transporte" value="transporte">
+                                    <input type="radio" name="tipo" id="tipo-transporte" value="transporte" ng-model="vm.itemBusca.tipo">
                                     TRANSPORTE
                                 </label>
                             </div>
                         </div>
 
 
-                        <div class="form-group  col-md-3 col-xs-12  busca-item">
-                            <label for="quando">Quando?</label>
-                            <input type="date" class="form-control" id="quando">
+                        <div class="col-md-3 col-xs-12  busca-item">
+                            <label >Quando?</label>
+                            <div>
+                                <label for="inicio">Inicio</label>
+                                <input type="date" class="form-control" id="inicio" ng-model="vm.itemBusca.inicio"> <span> >> </span>
+                                <label for="fim">Fim</label>
+                                <input type="date" class="form-control" id="fim" ng-model="vm.itemBusca.fim">
+                            </div>
                         </div>
                         
                         <div class="form-group  col-md-3 col-xs-12  busca-item">
-                            <label for="produto">Produto?</label>
-                            <select class="form-control" id="produto">
-                                <option value="Maçã">Maçã</option>
-                                <option value="Banana">Banana</option>
-                                <option value="Cebola">Cebola</option>
-                            </select>
+                            <label for="nomeProduto">Fittro?</label>
+                            <input type="text" ng-model="vm.filtro" />
                         </div>
                         
                     </div>
                 </div>
 
                 <div class="form-group col-xs-3 busca-btn-submit pull-right">
-                    <button type="submit" class="btn btn-success pull-right">Buscar</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-click="vm.buscar()">Buscar</button>
                 </div>
             </form>
         </div>
 
-        <div class="row mapa">
-            <img src="img/map.png" alt="mapa" class="img-responsive center-block"/>
+        <div class="row imagem-principal">
+            <img src="img/Esquema.png" alt="mapa" class="img-responsive center-block"/>
         </div>
     </div>
     <script src="bower_components/angular/angular.min.js"></script>
