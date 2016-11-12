@@ -55,3 +55,39 @@
     margin-top:5px;
     width:120px !important;
 }
+.verde {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+}
+.modal-open{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.modal-open .fundo{   
+    position:fixed; 
+    background-color: black;
+    opacity: 0.5; 
+    width: 100%;
+    height: 100%;
+}
+.modal-open .cadastrar {
+    position: relative;
+    height: 100%;
+    margin-top: 100px;
+}
+.button{
+    background-color: white;
+}
+.btn-default {
+    background-color: white !important;
+    border: 1px solid black;
+    font-weight: 700;
+    padding:13px;
+}
+.separador-btn {
+    display: inline-block;
+    width: 40px;
+}
