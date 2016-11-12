@@ -43,3 +43,16 @@
     margin-top:5px;
     width:120px !important;
 }
+
+.alinhar_esq{
+    text-align:left;
+}
+
+.img_produto{
+    width:100%;
+}
+
+.alinhar_dir{
+    float:right;
+    text-align:right;
+}
