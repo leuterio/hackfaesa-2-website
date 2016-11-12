@@ -1,0 +1,45 @@
+.citacao{
+    background:#CCC; 
+    color:#FFF;
+}
+.logo{
+    display:inline-block;
+    float: left;
+}
+.titulo{
+    font-size:34px;
+    padding-left: 10px;
+    color:#CCC;
+}
+.login{
+    display:inline-block;
+    float:right;
+}
+.busca .busca-item{
+    height:80px;
+    padding-top:5px;
+    /*width:100%;*/
+    text-align:center;
+    vertical-align:center;
+    background-color:white;
+    /*transition: background-color 0.5s linear 0.1s;*/
+    border: 1px solid black;
+}
+.busca .busca-item:hover{
+    background-color:cyan;
+}
+.busca .busca-item input,
+.busca .busca-item select{
+    margin:auto;
+} 
+
+.separador{
+    width:15px;
+}
+.mapa{
+    margin-top:60px;
+}
+.busca .busca-btn-submit button{
+    margin-top:5px;
+    width:120px !important;
+}
