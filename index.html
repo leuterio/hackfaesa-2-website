@@ -87,7 +87,7 @@
                         <div class="col-xs-6 col-xs-offset-3">
                             <div class="caption">
                                 
-                                <img ng-src="img/banana1.png" style="width:100%" class="img-responsive img-rounded img_produto">
+                                <img ng-src="{{vm.itemDetalhes.fotos[0]}}" style="width:100%" class="img-responsive img-rounded img_produto">
                                 <br> </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                         <div class="thumbnail">
                             <div class="caption">
                                 <h2 ng-bind="vm.itemPin.titulo"></h2> 
-                                <img src="img/banana1.png" style="width:100%" class="img-responsive img-rounded img_produto">
+                                <img ng-src="{{vm.itemPin.fotos[0]}}" style="width:100%" class="img-responsive img-rounded img_produto">
                                 <br>
                                 <label class="alinhar_esq" ng-bind="vm.itemPin.produto" ></label>
                                 <label class="alinhar_dir">{{vm.itemPin.valorUnitario | currency}}</label>
@@ -181,23 +181,23 @@
                             <div class=" col-md-3 col-xs-12 busca-item  menu_borda">
                                 <div class="radio">
                                     <label class="produto">
-                                        <input  type="radio" name="tipo" id="tipo-produto" value="produto" checked ng-model="vm.itemBusca.tipo"> Produto </label>
+                                        <input  type="radio" name="tipo" id="tipo-produto" value="0" checked ng-model="vm.itemBusca.tipo"> Produto </label>
                                 </div>
                                 <div class="separador"></div>
                                 <div class="radio">
                                     <label class="transporte">
-                                        <input  type="radio" name="tipo" id="tipo-transporte" value="transporte" ng-model="vm.itemBusca.tipo"> Transporte </label>
+                                        <input  type="radio" name="tipo" id="tipo-transporte" value="1" ng-model="vm.itemBusca.tipo"> Transporte </label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-xs-12  busca-item  menu_borda">
                                 <div class="form-group">
-                                        <label for="inicio">Quando</label>
-                                        <input type="date" class="form-control" id="inicio" ng-model="vm.itemBusca.inicio"> 
+                                        <label for="data">Quando</label>
+                                        <input type="date" class="form-control" id="data" ng-model="vm.itemBusca.data"> 
                                 </div>
                                 
                             </div>
                             <div class="form-group  col-md-3 col-xs-12  busca-item  menu_borda_dir">
-                                <label for="nomeProduto">Busca</label>
+                                <label for="nomeProduto">Filtrar</label>
                                 <input type="text" class="form-control" ng-model="vm.filtro" /> 
                             </div>
                         </div>
@@ -212,11 +212,11 @@
 
         <div class="row busca" ng-show="vm.items.length > 0">
             <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
-                <div class="resultado" ng-repeat="item in vm.items | orderBy: $index">
+                <div class="resultado" ng-repeat="item in vm.items | filter:vm.filtro">
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
                         <div class="thumbnail">
                             <div class="caption">
-                                <h2 ng-bind="item.titulo"></h2> <img ng-src="img/banana1.png" class="img-responsive img-rounded img_produto">
+                                <h2 ng-bind="item.titulo"></h2> <img ng-src="{{item.fotos[0]}}" class="img-responsive img-rounded img_produto">
                                 <br>
                                 <label class="alinhar_esq" ng-bind="item.produto">Banana</label>
                                 <label class="alinhar_dir">{{item.valorUnitario | currency}}</label>

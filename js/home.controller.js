@@ -95,6 +95,7 @@
 
             vm.selecionaPin = selecionaPin;
             vm.fechaModalPin = fechaModalPin;
+
         }
 
         $scope.safeApply = function(fn) {

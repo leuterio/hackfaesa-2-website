@@ -29,7 +29,7 @@
                         }
                     }
                     if(filtro.tipo){
-                        if(now.tipoAnuncio && now.tipoAnuncio == filtro.tipo){
+                        if(now.tipoAnuncio != undefined && now.tipoAnuncio != null && now.tipoAnuncio == parseInt(filtro.tipo)){
                             last.push(now);
                             return last;
                         }else{
@@ -37,9 +37,7 @@
                         }
                     }
                     if(filtro.data){
-                        if(
-                            (now.dateInicio && now.dateInicio >= filtro.inicio && now.dataExpira && now.dataExpira <= filtro.fim) 
-                                || (now.dataExpira && now.dataExpira <= filtro.fim) ){
+                        if(now.dateInicio && comparaStringData(now.dateInicio, filtro.data, "menor") && now.dataExpira && comparaStringData(now.dataExpira, filtro.data, "maior")){
                             last.push(now);
                             return last;
                         }else{
@@ -51,5 +49,24 @@
                     return last;
                 }, []);
          }
+         function comparaStringData(texto, data, tipo){
+            let array = texto.split("/");
+            var dia = data.getDate();
+            if (dia.toString().length == 1) dia = "0"+dia;
+             
+             var mes = data.getMonth()+1;
+             if (mes.toString().length == 1) mes = "0"+mes;
+
+                var ano = data.getFullYear(); 
+                
+                   
+            if(tipo == "maior"){
+                if(parseInt(array[0]) >= parseInt(dia) && parseInt(array[1]) >= parseInt(mes) && parseInt(array[2]) >= parseInt(ano)){ return true };
+            }else{
+                if(parseInt(array[0]) <= parseInt(dia) && parseInt(array[1]) <= parseInt(mes) && parseInt(array[2]) <= parseInt(ano)){ return true };
+            }
+            return false;
+        }
+
     }
 })();
