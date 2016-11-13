@@ -1,5 +1,6 @@
 var map;
- 
+var chave = 'AIzaSyBtDbeEPMIUBPWCHiXwmOSgDjLAFKkpZv4';
+
 function initialize() {
     var latlng = new google.maps.LatLng(-20.2582231, -40.52878999999999);
  
@@ -31,3 +32,4 @@ function carregarPontos() {
 }
  
 initialize();
+

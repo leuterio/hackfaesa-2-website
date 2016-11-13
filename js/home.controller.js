@@ -11,22 +11,44 @@
         vm.itemBusca = {};
         vm.itemDetalhes = null;
         vm.itemPin = null;
-        vm.userLogin = {};
+        vm.userLogin = {
+            nomeUsuario: "José da silva",
+            telefone: '(27) 992713462',
+            email: 'jose@silva.net',
+            endereco: 'avenida um numero 6'
+        };
         vm.userCadastro = {};
         vm.items = [];
-        vm.modalCadastro = vm.modalLogin = vm.modalAjuda = false;
+        vm.itemCadastro = {
+            fotos:['img/produtos/v_palio-web.png', 'img/produtos/p_cafe-web.png']
+        };
+        vm.modalMenbro = vm.modalCadastrar = vm.modalLogin = vm.modalAjuda = false;
         vm.locais = ['Marechal Floriano', 'Domingos Martins', 'Rio Bananal'];
+        vm.openMap = true;
+
+
 
         activate();
 
         ////////////////
-        function cadastrar(){
-            vm.modalCadastro = true;
+        function openCadastro(){
+            vm.modalCadastrar = true;
         }
-        function fecharCadastro(){
-            vm.modalCadastro = false;
+        function closeCadastro(){
+            vm.modalCadastrar = false;
         }
-        function efetuarCadastro(){
+        function efetuarCadastro(item){
+            vm.items.push(JSON.parse(JSON.stringify(vm.itemCadastro)));
+            vm.itemCadastro = {};
+            vm.modalCadastrar = false;
+        }
+        function menbro(){
+            vm.modalMenbro = true;
+        }
+        function fecharMenbro(){
+            vm.modalMenbro = false;
+        }
+        function efetuarCadastroMenbro(){
             console.log(vm.userCadastro);
             //Cadastrar usuario;
             fecharCadastro();
@@ -41,6 +63,7 @@
         function efetuarLogin(){
             console.log(vm.userLogin);
             //Logar   
+            vm.logado = true;
             fecharLogin();
         }
 
@@ -53,6 +76,7 @@
 
         function buscar() {
             vm.items = HomeService.getAnumciosFiltrados(vm.itemBusca);
+            obterLatLong();
         }
 
         function detalhes(item){
@@ -75,6 +99,25 @@
             vm.itemPin = null;
         }
 
+        function obterLatLong(){
+            let cordenadas = [];
+            vm.items.forEach(function(item){
+                if(item.endereco){
+                  getLatLong(item, item.endereco);
+                }else{
+                    if(item.enderecoDestino)
+                      getLatLong(item, item.enderecoDestino);
+                }
+            });
+        }
+        function getLatLong(item, endereco){
+            HomeService.obterLatLong(endereco).then(function(data){
+                item.lat = data.results[2] ? data.results[2].geometry.location.lat : '';
+                item.lng = data.results[2] ? data.results[2].geometry.location.lng : '';
+                console.log(vm.items);
+            });
+        }
+
         function activate() { 
             vm.titulo = "Agribook."
             
@@ -86,8 +129,12 @@
             vm.fecharAjuda = fecharAjuda;
             vm.buscar = buscar;
             
-            vm.cadastrar = cadastrar;
-            vm.fecharCadastro = fecharCadastro;
+            vm.menbro = menbro;
+            vm.fecharMenbro = fecharMenbro;
+            vm.efetuarCadastroMenbro = efetuarCadastroMenbro;
+
+            vm.closeCadastro = closeCadastro;
+            vm.openCadastro = openCadastro;
             vm.efetuarCadastro = efetuarCadastro;
 
             vm.detalhes = detalhes;

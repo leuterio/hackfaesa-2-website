@@ -43,8 +43,8 @@
         </div>
     </div>
 
-    <div class="modal-open" ng-show="vm.modalCadastro" >
-        <div class="fundo" ng-click="vm.fecharCadastro()"></div>
+    <div class="modal-open" ng-show="vm.modalMenbro" >
+        <div class="fundo" ng-click="vm.fecharMenbro()"></div>
         <div class="cadastrar">
             <div class="section">
                 <div class="container">
@@ -64,11 +64,79 @@
                                     <label class="control-label" for="senha-cadastro-confirma">Confirmar senha</label>
                                     <input class="form-control" id="senha-cadstro-confirma" placeholder="Senha" type="password" ng-model="vm.userCadastro.senhaConfirma"> </div>
                                 <div class="row text-center">
-                                    <button type="button" class="btn btn-default" ng-click="vm.fecharCadastro()">Voltar</button>
-                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarCadastro()">Entrar</button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.fecharMenbro()">Voltar</button>
+                                    <button type="submit" class="btn btn-default" ng-click="vm.efetuarCadastroMenbro()">Entrar</button>
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-open" ng-show="vm.modalCadastrar" >
+        <div class="fundo" ng-click="vm.closeCadastro()"></div>
+        <div class="section">
+            <div class="container">
+                <div class="thumbnail">
+                    <div class="row">
+                      <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
+                                <form role="form">
+                                    <h2>Informações do Produto</h2>
+                                    <div class="form-group">
+                                        <label >Titulo</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.titulo" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Fotos</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.fotos" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Descricao</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.descricao" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Nome Produto</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.produto" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >valor Unitario</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.valorUnitario" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Quantidade Total</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.quantidadeTotal" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Data de Inicio</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.dateInicio" /> 
+                                    </div>
+                                    <div class="form-group">
+                                        <label >data de Expiração</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.dataExpira" /> 
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label >dias Disponiveis</label>
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.diasDisponiveis" /> 
+                                    </div>
+                                    
+                                    <h2>Informações do Fornecedor</h2>
+                                    <p><strong>Nome: </strong>{{vm.userLogin.nomeUsuario}}</p>
+                                    <p><strong>Telefone: </strong>{{vm.userLogin.telefone}}</p>
+                                    <p><strong>Email: </strong>{{vm.userLogin.email}}</p>
+                                    <p><strong>Endereço: </strong>{{vm.userLogin.endereco}}</p>
+
+                                    <div class="row text-center">
+                                        <button type="button" class="btn btn-default" ng-click="vm.fecharCadastro()">Voltar</button>
+                                        <button type="submit" class="btn btn-default" ng-click="vm.efetuarCadastro()">Entrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -150,9 +218,10 @@
             <div class="logo">
                 <div class="logo-img"></div> <span class="titulo" ng-bind="vm.titulo">Agribook.</span> </div>
             <div class="login">
-                <span class="btn " ng-click="vm.cadastrar()">Tornar-se menbro</span>
+                <span class="btn " ng-click="vm.menbro()">Tornar-se menbro</span>
                 <span class="btn " ng-click="vm.ajuda()">Ajuda</span>
-                <span class="btn " ng-click="vm.acessar()">Entrar</span>
+                <span class="btn " ng-click="vm.openCadastro()" ng-show="vm.logado">Cadastrar</span>
+                <span class="btn " ng-click="vm.acessar()" ng-hide="vm.logado">Entrar</span>
             </div>
         </div>
     </div>
@@ -264,6 +333,7 @@
     <script src="http://maps.googleapis.com/maps/api/js?key=&amp;sensor=false"></script>
     <script src="js/mapa.js"></script>
 
+    
 </body>
 
 </html>
