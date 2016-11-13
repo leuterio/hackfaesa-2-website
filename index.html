@@ -75,6 +75,54 @@
         </div>
     </div>
 
+
+    <div class="modal-open" ng-show="vm.itemDetalhes !== null">
+        <div class="fundo" ng-click="vm.fechaDetalhes()"></div>
+        <div class="section">
+            <div class="container">
+                <div class="thumbnail">
+                    <div class="row">
+                      <div class="container">
+                       <h1 ng-bind="vm.itemDetalhes.titulo"></h1> 
+                        </div>
+                        <div class="col-xs-6 col-xs-offset-3">
+                            <div class="caption">
+                                
+                                <img ng-src="img/banana1.png" style="width:100%" class="img-responsive img-rounded img_produto">
+                                <br> </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <p ng-bind="vm.itemDetalhes.descricao"> </p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h2>Informações do Produto</h2>
+                                <p><strong>Produto: </strong>{{vm.itemDetalhes.produto}}</p>
+                                <p><strong>Valor: </strong>{{vm.itemDetalhes.valorUnitario | currency:"R$:"}} / {{vm.itemDetalhes.unidadeMedida}}</p>
+                                <p><strong>Quantidade disponivel: </strong>{{vm.itemDetalhes.quantidadeTotal}} {{vm.itemDetalhes.unidadeMedida}}</p>
+                                <p><strong>Data inicio: </strong>{{vm.itemDetalhes.dateInicio | date:'dd/mm/yyyy'}}</p>
+                                <p><strong>Data validade: </strong>{{vm.itemDetalhes.dataExpira | date:'dd/mm/yyyy'}}</p>
+                                <p><strong>Dias disponiveis: </strong>{{vm.itemDetalhes.diasDisponiveis ? vm.itemDetalhes.diasDisponiveis : 'Todos os dias'}}</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h2>Informações do Fornecedor</h2>
+                                <p><strong>Nome: </strong>{{vm.itemDetalhes.nomeUsuario}}</p>
+                                <p><strong>Telefone: </strong>{{vm.itemDetalhes.telefone}}</p>
+                                <p><strong>Email: </strong>{{vm.itemDetalhes.email}}</p>
+                                <p><strong>Endereço: </strong>{{vm.itemDetalhes.endereco}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="navbar navbar-app navbar-top">
         <div class="mavbar-brand">
             <div class="logo">
@@ -86,6 +134,8 @@
             </div>
         </div>
     </div>
+
+   
     <div class="container">
         <div class="row">
             <div class="well citacao">
@@ -93,6 +143,7 @@
                  <div class="subtitulo">Produtos Naturais de agricultores perto de você.</div>
             </div>
         </div>
+
         <div class="row busca">
             <form class="form-inline">
                 <div class="col-xs-12">
@@ -136,6 +187,31 @@
                 </div>
             </form>
         </div>
+
+
+        <div class="row busca" ng-show="vm.items.length > 0">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
+                <div class="resultado" ng-repeat="item in vm.items | orderBy: $index">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h2 ng-bind="item.titulo"></h2> <img ng-src="img/banana1.png" class="img-responsive img-rounded img_produto">
+                                <br>
+                                <label class="alinhar_esq" ng-bind="item.produto">Banana</label>
+                                <label class="alinhar_dir">{{item.valorUnitario | currency}}</label>
+                                <p>{{item.descricao}}</p>
+                                <label class="alinhar_esq" ng-bind="item.nomeUsuario"></label>
+                                <button type="submit" class="btn btn-info alinhar_dir" ng-click="vm.detalhes(item)">Ver mais...</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
+                <div class="map"> <img src="img/map.png" alt="mapa" class="img-responsive center-block" /> </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="descricaoGeral">

@@ -9,6 +9,7 @@
     function HomeController($scope, HomeService) {
         var vm = this;
         vm.itemBusca = {};
+        vm.itemDetalhes = null;
         vm.userLogin = {};
         vm.userCadastro = {};
         vm.items = [];
@@ -51,30 +52,16 @@
         }
 
         function buscar() {
-            vm.items = HomeService.getAnumcios();
-            let arrayAux = [];
-            function filtraItens(item, index){
-                if(vm.itemBusca.onde){
-                    if(item.endereco && item.endereco.toLowerCase().indexOf(vm.itemBusca.onde.toLowerCase()) !== -1){
-                        return item;
-                    }
-                }
-                if(vm.itemBusca.tipo){
-                    if(item.tipoAnuncio && item.tipoAnuncio == vm.itemBusca.tipo){
-                        return item;
-                    }
-                }
-                if(vm.itemBusca.data){
-                    if(
-                        (item.dateInicio && item.dateInicio >= vm.itemBusca.inicio && item.dataExpira && item.dataExpira <= vm.itemBusca.fim) 
-                            || (item.dataExpira && item.dataExpira <= vm.itemBusca.fim) ){
-                        return item;
-                    }
-                }
-            }
-            arrayAux = vm.items.reduce(filtraItens, arrayAux);
+            vm.items = HomeService.getAnumciosFiltrados(vm.itemBusca);
             debugger;
-            vm.items = arrayAux;
+        }
+
+        function detalhes(item){
+            //show modal detalhes
+            vm.itemDetalhes = item;
+        }
+        function fechaDetalhes(){
+            vm.itemDetalhes = null;
         }
 
         function activate() { 
@@ -91,6 +78,9 @@
             vm.cadastrar = cadastrar;
             vm.fecharCadastro = fecharCadastro;
             vm.efetuarCadastro = efetuarCadastro;
+
+            vm.detalhes = detalhes;
+            vm.fechaDetalhes = fechaDetalhes;
 
 
 
