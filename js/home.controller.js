@@ -10,6 +10,7 @@
         var vm = this;
         vm.itemBusca = {};
         vm.itemDetalhes = null;
+        vm.itemPin = null;
         vm.userLogin = {};
         vm.userCadastro = {};
         vm.items = [];
@@ -26,7 +27,6 @@
             vm.modalCadastro = false;
         }
         function efetuarCadastro(){
-            debugger;
             console.log(vm.userCadastro);
             //Cadastrar usuario;
             fecharCadastro();
@@ -39,7 +39,6 @@
             vm.modalLogin = false;
         }
         function efetuarLogin(){
-            debugger;
             console.log(vm.userLogin);
             //Logar   
             fecharLogin();
@@ -54,15 +53,26 @@
 
         function buscar() {
             vm.items = HomeService.getAnumciosFiltrados(vm.itemBusca);
-            debugger;
         }
 
         function detalhes(item){
-            //show modal detalhes
+            fechaModalPin();
             vm.itemDetalhes = item;
         }
         function fechaDetalhes(){
             vm.itemDetalhes = null;
+        }
+
+        function selecionaPin(tipo){
+            vm.items.forEach(function(item) {
+                if(item.tipoAnuncio == tipo){
+                    vm.itemPin = item;
+                    return;       
+                }
+            }, this);
+        }
+        function fechaModalPin(){
+            vm.itemPin = null;
         }
 
         function activate() { 
@@ -83,8 +93,8 @@
             vm.detalhes = detalhes;
             vm.fechaDetalhes = fechaDetalhes;
 
-
-
+            vm.selecionaPin = selecionaPin;
+            vm.fechaModalPin = fechaModalPin;
         }
 
         $scope.safeApply = function(fn) {

@@ -175,3 +175,11 @@
     position: fixed;
     overflow-x: auto;
 }
+.modal-open .item-modal .pull-right{
+    margin-right: 10px;
+}
+.pin{
+    position:absolute;
+    z-index:100;
+    cursor: pointer;
+}

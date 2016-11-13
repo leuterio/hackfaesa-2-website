@@ -75,7 +75,6 @@
         </div>
     </div>
 
-
     <div class="modal-open" ng-show="vm.itemDetalhes !== null">
         <div class="fundo" ng-click="vm.fechaDetalhes()"></div>
         <div class="section">
@@ -122,6 +121,29 @@
         </div>
     </div>
 
+    <div class="modal-open item-modal" ng-show="vm.itemPin !== null">
+        <div class="fundo" ng-click="vm.fechaModalPin()"></div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 pull-right">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h2 ng-bind="vm.itemPin.titulo"></h2> 
+                                <img src="img/banana1.png" style="width:100%" class="img-responsive img-rounded img_produto">
+                                <br>
+                                <label class="alinhar_esq" ng-bind="vm.itemPin.produto" ></label>
+                                <label class="alinhar_dir">{{vm.itemPin.valorUnitario | currency}}</label>
+                                <p>{{vm.itemPin.descricao}}</p>
+                                <label class="alinhar_esq" ng-bind="vm.itemPin.nomeUsuario"></label>
+                                <button type="submit" class="btn btn-info alinhar_dir" ng-click="vm.detalhes(vm.itemPin)">Ver mais...</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="navbar navbar-app navbar-top">
         <div class="mavbar-brand">
@@ -207,7 +229,13 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-xg-6">
-                <div class="map"> <img src="img/map.png" alt="mapa" class="img-responsive center-block" /> </div>
+                <div class="map" style="position:relative;"> 
+                    <!--<img src="img/map.png" alt="mapa" class="img-responsive center-block" /> -->
+                    <div class="pin" style="position:absolute;left:235px;top:35px;z-index:5;" ng-click="vm.selecionaPin(0)"><img src="img/pin_agri_small.png" alt="produto" /></div>
+                    <div class="pin" style="position:absolute;right:175px;bottom:75px;z-index:5;" ng-click="vm.selecionaPin(1)"><img src="img/pin_wheel_small.png" alt="transporte" /></div>
+                    <div id="mapa" style="height: 420px; width:100%"></div>    
+                </div>
+                
             </div>
         </div>
 
@@ -232,6 +260,10 @@
     <script src="js/app.js"></script>
     <script src="js/home.controller.js"></script>
     <script src="js/home.service.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=&amp;sensor=false"></script>
+    <script src="js/mapa.js"></script>
+
 </body>
 
 </html>
