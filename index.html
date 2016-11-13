@@ -82,7 +82,7 @@
                     <div class="row">
                       <div class="container">
                         <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4 col-xg-4 col-sm-offset-4 col-lg-offset-4 col-xg-offset-4 well">
+                            <div class="col-sm-8 col-md-8 col-lg-8 col-xg-8 col-sm-offset-8 col-lg-offset-2 col-xg-offset-2 well">
                                 <form role="form">
                                     <h2>Informações do Produto</h2>
                                     <div class="form-group">
@@ -90,8 +90,17 @@
                                         <input type="text" class="form-control" ng-model="vm.itemCadastro.titulo" /> 
                                     </div>
                                     <div class="form-group">
+                                        <div class="radio">
+                                            <label class="produto">
+                                                <input  type="radio" name="tipo" id="tipo-produto" value="0" checked ng-model="vm.itemCadastro.tipo"> Produto </label>
+                                        
+                                            <label class="transporte">
+                                                <input  type="radio" name="tipo" id="tipo-transporte" value="1" ng-model="vm.itemCadastro.tipo"> Transporte </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label >Fotos</label>
-                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.fotos" /> 
+                                        <input type="text" class="form-control" ng-model="vm.itemCadastro.fotos[vm.itemCadastro.tipo]" /> 
                                     </div>
                                     <div class="form-group">
                                         <label >Descricao</label>
@@ -124,10 +133,10 @@
                                     </div>
                                     
                                     <h2>Informações do Fornecedor</h2>
-                                    <p><strong>Nome: </strong>{{vm.userLogin.nomeUsuario}}</p>
-                                    <p><strong>Telefone: </strong>{{vm.userLogin.telefone}}</p>
-                                    <p><strong>Email: </strong>{{vm.userLogin.email}}</p>
-                                    <p><strong>Endereço: </strong>{{vm.userLogin.endereco}}</p>
+                                    <p><strong>Nome: </strong><input type="text" class="form-control" ng-model="vm.itemCadastro.nomeUsuario" value="{{vm.userLogin.nomeUsuario}}" /> </p>
+                                    <p><strong>Telefone: </strong><input type="text" class="form-control" ng-model="vm.itemCadastro.telefone" value="{{vm.userLogin.telefone}}" /></p>
+                                    <p><strong>Email: </strong><input type="text" class="form-control" ng-model="vm.itemCadastro.email" value="{{vm.userLogin.email}}" /></p>
+                                    <p><strong>Endereço: </strong><input type="text" class="form-control" ng-model="vm.itemCadastro.endereco" value="{{vm.userLogin.endereco}}" /></p>
 
                                     <div class="row text-center">
                                         <button type="button" class="btn btn-default" ng-click="vm.fecharCadastro()">Voltar</button>

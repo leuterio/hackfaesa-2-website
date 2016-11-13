@@ -20,7 +20,11 @@
         vm.userCadastro = {};
         vm.items = [];
         vm.itemCadastro = {
-            fotos:['img/produtos/v_palio-web.png', 'img/produtos/p_cafe-web.png']
+            fotos:['img/produtos/p_cafe-web.png', 'img/produtos/v_palio-web.png'],
+            nomeUsuario: "José da silva",
+            telefone: '(27) 992713462',
+            email: 'jose@silva.net',
+            endereco: 'avenida um numero 6'
         };
         vm.modalMenbro = vm.modalCadastrar = vm.modalLogin = vm.modalAjuda = false;
         vm.locais = ['Marechal Floriano', 'Domingos Martins', 'Rio Bananal'];
