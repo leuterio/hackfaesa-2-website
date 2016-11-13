@@ -152,9 +152,8 @@
                             <div class="form-group col-md-3 col-xs-12 busca-item menu_borda_esq">
                                 <label for="onde">Onde</label>
                                 <select class="form-control" id="onde" ng-model="vm.itemBusca.onde">
-                                    <option value="Marechal Floriano">Marechal Floriano</option>
-                                    <option value="Domingos Martins">Domingos Martins</option>
-                                    <option value="Rio Bananal">Rio Bananal</option>
+                                    <option selected></option>
+                                    <option ng-repeat="local in vm.locais" value="{{local}}">{{local}}</option>
                                 </select>
                             </div>
                             <div class=" col-md-3 col-xs-12 busca-item  menu_borda">

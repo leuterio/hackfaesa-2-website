@@ -14,6 +14,7 @@
         vm.userCadastro = {};
         vm.items = [];
         vm.modalCadastro = vm.modalLogin = vm.modalAjuda = false;
+        vm.locais = ['Marechal Floriano', 'Domingos Martins', 'Rio Bananal'];
 
         activate();
 
